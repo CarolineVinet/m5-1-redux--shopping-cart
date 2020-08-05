@@ -22,7 +22,7 @@ const Cart = () => {
         <NumofItems>{totalquantity} items</NumofItems>
       </Header>
       {cartItems.map((item) => {
-        return <CartItem item={item} />;
+        return <CartItem key={item.id} item={item} />;
       })}
       <CheckoutDiv>
         <Total>Total:$ {totalprice}</Total>
