@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../actions";
+import { removeItem, updateQuantity } from "../actions";
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   return (
@@ -11,7 +11,16 @@ const CartItem = ({ item }) => {
         <CloseButton onClick={() => dispatch(removeItem(item))}>X</CloseButton>
       </TopDiv>
       <BottomDiv>
-        <ItemQuantity>Quantity: {item.quantity}</ItemQuantity>
+        <ItemQuantity>
+          Quantity:{" "}
+          <QuantityInput
+            onChange={(event) => {
+              const inputValue = parseInt(event.target.value) || 0;
+              dispatch(updateQuantity({ ...item, quantity: inputValue }));
+            }}
+            value={item.quantity}
+          ></QuantityInput>
+        </ItemQuantity>
       </BottomDiv>
     </ItemInCart>
   );
@@ -50,5 +59,10 @@ const BottomDiv = styled.div`
 `;
 
 const ItemQuantity = styled.p``;
+
+const QuantityInput = styled.input`
+  margin: 5px;
+  width: 40px;
+`;
 
 export default CartItem;

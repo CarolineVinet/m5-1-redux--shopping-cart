@@ -30,6 +30,14 @@ export default function cartReducer(state = initialState, action) {
         };
       }
     }
+    case "UPDATE_QUANTITY": {
+      return {
+        ...state,
+        [action.item.id]: {
+          ...action.item,
+        },
+      };
+    }
     default:
       return state;
   }
