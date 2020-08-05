@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import CartItem from "./CartItem";
-import StoreItem from "./StoreItem";
-import ItemGrid from "./ItemGrid";
 import { getStoreItemArray } from "../reducers";
 import { useSelector } from "react-redux";
 
@@ -10,10 +8,12 @@ const Cart = () => {
   const cartItems = useSelector(getStoreItemArray);
   let totalprice = 0;
   let totalquantity = 0;
+
   cartItems.forEach((item) => {
     totalprice = item.price * item.quantity + totalprice;
     totalquantity = item.quantity + totalquantity;
   });
+
   console.log(cartItems);
   return (
     <CartBody>

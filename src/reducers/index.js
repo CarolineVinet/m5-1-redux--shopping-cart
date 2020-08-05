@@ -14,6 +14,22 @@ export default function cartReducer(state = initialState, action) {
         },
       };
     }
+    case "REMOVE_ITEM": {
+      if (state[action.item.id] && state[action.item.id].quantity === 1) {
+        const copyOfState = { ...state };
+        delete copyOfState[action.item.id];
+
+        return copyOfState;
+      } else {
+        return {
+          ...state,
+          [action.item.id]: {
+            ...action.item,
+            quantity: state[action.item.id].quantity - 1,
+          },
+        };
+      }
+    }
     default:
       return state;
   }

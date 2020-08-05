@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
+import { useDispatch } from "react-redux";
+import { removeItem } from "../actions";
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
   return (
     <ItemInCart>
       <TopDiv>
-        <ItemName>{item.title}</ItemName> <CloseButton>X</CloseButton>
+        <ItemName>{item.title}</ItemName>{" "}
+        <CloseButton onClick={() => dispatch(removeItem(item))}>X</CloseButton>
       </TopDiv>
       <BottomDiv>
         <ItemQuantity>Quantity: {item.quantity}</ItemQuantity>
