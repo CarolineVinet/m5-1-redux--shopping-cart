@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const CartItem = () => {
+const CartItem = ({ item }) => {
   return (
     <ItemInCart>
       <TopDiv>
-        <ItemName>Sticker Name</ItemName> <CloseButton>X</CloseButton>
+        <ItemName>{item.title}</ItemName> <CloseButton>X</CloseButton>
       </TopDiv>
       <BottomDiv>
-        <ItemQuantity>Quantity: X</ItemQuantity>
+        <ItemQuantity>Quantity: {item.quantity}</ItemQuantity>
       </BottomDiv>
     </ItemInCart>
   );
